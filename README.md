@@ -8,18 +8,21 @@ Install [helm](https://helm.sh/).
 name: helm
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
-      - master
+      - main
+
+env:
+  CHARTPATH: charts/foo
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v3
       - uses: actions/checkout@v3
       - uses: 0xProject/setup-helm@v1
+        with:
+          version: 3.10.1
+      - run: helm lint ${{ env.CHARTPATH }}
+      - run: helm template ${{ env.CHARTPATH }}
 ```
