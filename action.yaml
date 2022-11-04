@@ -3,7 +3,7 @@ description: 'Setup https://helm.sh/'
 author: 'Marcin Wolny'
 inputs:
   version:
-    default: latest
+    default: 3.10.1
 runs:
   using: 'node16'
   main: 'dist/setup-helm/index.js'
