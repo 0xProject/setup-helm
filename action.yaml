@@ -5,5 +5,5 @@ inputs:
   version:
     default: latest
 runs:
-  using: 'node18'
+  using: 'node16'
   main: 'dist/setup-helm/index.js'
