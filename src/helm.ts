@@ -8,10 +8,10 @@ export interface Options {
 }
 
 export async function install(options: Options): Promise<number> {
-  const path = await tc.downloadTool(
+  const archive = await tc.downloadTool(
     `https://get.helm.sh/helm-v${options.version}-linux-amd64.tar.gz`
   );
-  const extracted = await tc.extract7z(path);
+  const extracted = await tc.extractTar(archive);
 
   core.addPath(filepath.join(extracted));
 
