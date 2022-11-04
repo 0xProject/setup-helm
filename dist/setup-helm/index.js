@@ -6584,8 +6584,8 @@ const exec = __importStar(__nccwpck_require__(1514));
 const filepath = __importStar(__nccwpck_require__(1017));
 function install(options) {
     return __awaiter(this, void 0, void 0, function* () {
-        const path = yield tc.downloadTool(`https://get.helm.sh/helm-v${options.version}-linux-amd64.tar.gz`);
-        const extracted = yield tc.extract7z(path);
+        const archive = yield tc.downloadTool(`https://get.helm.sh/helm-v${options.version}-linux-amd64.tar.gz`);
+        const extracted = yield tc.extractTar(archive);
         core.addPath(filepath.join(extracted));
         return exec.exec('helm', ['version']);
     });
